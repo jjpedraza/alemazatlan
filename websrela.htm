@@ -1,0 +1,133 @@
+﻿<html>
+
+<head>
+<title>Scroll vertical especial</title>
+</head>
+<p align="center">
+
+<script LANGUAGE="JavaScript"> 
+//Panel Ticker javascriptfacil.com  www.javascriptfacil.com
+var swidth=350 
+var sheight=72 
+var svelocidad=2 
+var lineatexto=new Array() 
+lineatexto[0]='<div align="center"><font face=Arial size=3 color="black"><b>PANEL SCROLLER MÚLTIPLE</b><br>Velocidad, tamaño y estilo <b>configurables.</b><br>Puede incluir mensajes con <b><u>vínculos.</u></b></div></FONT>' 
+lineatexto[1]='<div align="center"><font face=Arial size=3 color="black">Utilízalo para anuncios<br>o novedades. <font color="#FFFF00"><b><i>Incluye imágenes</i></b><p><img src="hamm3.gif" width="32" height="32" border="0"></font></div>' 
+lineatexto[2]='<div align="center"><font face=Arial size=3 color="#485C0A">FÁCIL DE CONFIGURAR.<br>Puede incluir <i>todo </i> tipo de códigos <b>HTML</b><br><b>básicos</b></font></div>' 
+lineatexto[3]='<div align="center"><font face=Arial size=3 color="#485C0A"><b>JavaScriptFacil.com</b><br>Recurso Javascript Nº 1<br>en <font color="red"><b>castellano</b></font> <a href="http://www.javascriptfacil.com">www.javascriptfacil.com</a><p></font></div>' 
+lineatexto[4]='<div align="center"><font face=Arial size=2 color="#485C0A"><b>Incluye tantas líneas </b><br>de mensaje como quieras...<br>solo <font color="red"><b>añade</b></font> otra linea como esta<p><img src="hamm3.gif" width="32" height="32" border="0"></font></div>'
+if (lineatexto.length>1) 
+i=1 
+else 
+i=0 
+function mostrar(){ 
+if (document.all){ 
+ieslider1.style.top=sheight 
+iemarquee(ieslider1) 
+} 
+else if (document.layers){ 
+document.ns4slider.document.ns4slider1.top=sheight 
+document.ns4slider.document.ns4slider1.visibility='show' 
+ns4marquee(document.ns4slider.document.ns4slider1) 
+} 
+else if (document.getElementById&&!document.all){ 
+document.getElementById('ns6slider1').style.top=sheight 
+ns6marquee(document.getElementById('ns6slider1')) 
+} 
+} 
+function iemarquee(whichdiv){ 
+iediv=eval(whichdiv)
+if (iediv.style.pixelTop>0&&iediv.style.pixelTop<=svelocidad){ 
+iediv.style.pixelTop=0
+setTimeout("iemarquee(iediv)",100)
+}
+if (iediv.style.pixelTop>=sheight*-1){
+iediv.style.pixelTop-=svelocidad
+setTimeout("iemarquee(iediv)",100)
+}
+else{
+iediv.style.pixelTop=sheight
+iediv.innerHTML=lineatexto[i]
+if (i==lineatexto.length-1)
+i=0
+else 
+i++ 
+ }
+}
+function ns4marquee(whichlayer){ 
+ns4layer=eval(whichlayer) 
+if (ns4layer.top>0&&ns4layer.top<=svelocidad){ 
+ns4layer.top=0 
+setTimeout("ns4marquee(ns4layer)",100) 
+}
+if (ns4layer.top>=sheight*-1){ 
+ns4layer.top-=svelocidad 
+setTimeout("ns4marquee(ns4layer)",100) 
+} 
+else{
+ns4layer.top=sheight 
+ns4layer.document.write(lineatexto[i]) 
+ns4layer.document.close() 
+if (i==lineatexto.length-1) 
+i=0 
+else 
+i++ 
+}
+} 
+function ns6marquee(whichdiv){ 
+ns6div=eval(whichdiv) 
+if (parseInt(ns6div.style.top)>0&&parseInt(ns6div.style.top)<=svelocidad){ 
+ns6div.style.top=0 
+setTimeout("ns6marquee(ns6div)",100) 
+}
+if (parseInt(ns6div.style.top)>=sheight*-1){ 
+ns6div.style.top=parseInt(ns6div.style.top)-svelocidad 
+setTimeout("ns6marquee(ns6div)",100) 
+}
+else{
+ns6div.style.top=sheight
+ns6div.innerHTML=lineatexto[i] 
+if (i==lineatexto.length-1) 
+i=0
+else
+i++
+}
+}
+</script>
+<body>
+
+</body>
+
+</p>
+
+<span style="borderwidth: 1; bordercolor: red; width: 240; height: 500; background: #B9E927">
+<p align="center">
+<body onload="mostrar()">
+
+<ilayer id="ns4slider" width="&amp;{swidth};" height="&amp;{sheight};">
+</p>
+<layer id="ns4slider1" height="&amp;{sheight};" onmouseover="svelocidad=0;" onmouseout="svelocidad=2">
+  <script language="JavaScript"> 
+if (document.layers) 
+document.write(lineatexto[0]) 
+  </script>
+  <script language="JavaScript"> 
+if (document.all){ 
+document.writeln('<div style="position:relative;overflow:hidden;width:'+swidth+';height:'+sheight+';clip:rect(0 '+swidth+' '+sheight+' 0);border:1 solid red;" onmouseover="svelocidad=0;" onmouseout="svelocidad=2">') 
+document.writeln('<div id="ieslider1" style="position:relative;width:'+swidth+';">') 
+document.write(lineatexto[0]) 
+document.writeln('</div></div>') 
+} 
+if(document.getElementById&&!document.all){ 
+document.writeln('<div style="position:relative;overflow:hidden;width:'+swidth+';height:'+sheight+';clip:rect(0 '+swidth+' '+sheight+' 0);border:1px solid red;" onmouseover="svelocidad=0;" onmouseout="svelocidad=2">') 
+document.writeln('<div id="ns6slider1" style="position:relative;width:'+swidth+';">') 
+document.write(lineatexto[0]) 
+document.writeln('</div></div>') 
+} 
+  </script>
+  </span>
+</layer>
+
+</body>
+
+</html>
